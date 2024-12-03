@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import { Provider } from "react-redux";
 import store from "../store/store";
 import "../global.css";
+import PrivateRoute from "../components/PrivateRoute"
 
 const RootLayout = () => {
   return (
@@ -12,6 +13,7 @@ const RootLayout = () => {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="register" options={{ headerShown: false }} />
       </Stack>
     </Provider>
   );
