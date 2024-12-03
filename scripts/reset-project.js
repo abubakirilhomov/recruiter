@@ -41,7 +41,7 @@ export default function RootLayout() {
 
 const moveDirectories = async () => {
   try {
-    // Create the app-example directory
+  
     await fs.promises.mkdir(newDirPath, { recursive: true });
     console.log(`📁 /${newDir} directory created.`);
 
