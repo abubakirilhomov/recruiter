@@ -6,12 +6,12 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#312651", // основной оттенок
+          default: "#312651", 
           dark: "#444262",
           light: "#83829A",
         },
-        accent: "#FF7754", // акцентный цвет
-        neutral: "#E6E4E6", // нейтральный цвет
+        accent: "#FF7754",
+        neutral: "#E6E4E6",
       },
     },
   },
