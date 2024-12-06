@@ -4,11 +4,11 @@ import PrivateRoute from '@/components/PrivateRoute'
 
 const Home = () => {
   return (
-    <PrivateRoute>
+    // <PrivateRoute>
       <View>
         <Text>Home</Text>
       </View>
-    </PrivateRoute>
+    // </PrivateRoute>
   )
 }
 

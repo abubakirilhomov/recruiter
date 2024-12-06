@@ -1,14 +1,34 @@
-//(tabs)/_layot.tsx
-import { View, Text } from 'react-native'
-import React from 'react'
-import Home from './home'
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
-const MainLayout = () => {
+export default function TabsLayout() {
   return (
-    <View>
-      <Home />
-    </View>
-  )
+    <Tabs
+      screenOptions={{
+        headerShown: false, // Скрыть заголовок
+        tabBarActiveTintColor: "tomato", // Цвет активного таба
+        tabBarInactiveTintColor: "gray", // Цвет неактивного таба
+        tabBarStyle: { backgroundColor: "#fff" }, // Стиль нижней панели
+      }}
+    >
+      <Tabs.Screen
+        name="home"
+        options={{
+          tabBarLabel: "Главная",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarLabel: "Профиль",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
+  );
 }
-
-export default MainLayout

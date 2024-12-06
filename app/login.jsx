@@ -5,9 +5,23 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import {login} from "../store/slices/AuthSlice"
 
 const Login = () => {
   const navigation = useNavigation();
+  const store = useSelector((store) => store)
+  console.log(store)
+  const dispatch = useDispatch()
+  const handleLogin = () => {
+    const userData = {
+      username: "JohnSmith", // mock username
+      email: "Johnsmiths@gmail.com", // mock email
+    };
+
+    dispatch(login(userData)); // dispatch with payload
+    navigation.navigate("home");
+  };
   return (
     <SafeAreaView>
       <Image source={loginImg} style={{ width: '100%', height: 200 }} />
@@ -32,7 +46,7 @@ const Login = () => {
 
         <View className="mt-8">
           <TouchableOpacity className="bg-accent rounded-3xl flex-row justify-center py-4 shadow-sm shadow-accent">
-            <Text className="text-white text-xl font-semibold">Login</Text>
+            <Text onPress={handleLogin} className="text-white text-xl font-semibold">Login</Text>
           </TouchableOpacity>
 
           <TouchableOpacity className="bg-transparent mt-3 rounded-3xl flex-row justify-center py-4 border border-accent">
