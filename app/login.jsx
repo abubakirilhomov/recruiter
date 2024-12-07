@@ -1,18 +1,20 @@
-import React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import React from "react";
+import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import loginImg from "../assets/images/login-img.jpg";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import {login} from "../store/slices/AuthSlice"
+import { SafeAreaView } from "react-native-safe-area-context";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "expo-router";
+import { login } from "../store/slices/AuthSlice";
 
 const Login = () => {
-  const navigation = useNavigation();
-  const store = useSelector((store) => store)
-  console.log(store)
-  const dispatch = useDispatch()
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const store = useSelector((store) => store);
+
+  console.log(store);
+
   const handleLogin = () => {
     const userData = {
       username: "JohnSmith", // mock username
@@ -20,27 +22,28 @@ const Login = () => {
     };
 
     dispatch(login(userData)); // dispatch with payload
-    navigation.navigate("home");
+    router.push("/home"); // Correct navigation for expo-router
   };
+
   return (
     <SafeAreaView>
-      <Image source={loginImg} style={{ width: '100%', height: 200 }} />
+      <Image source={loginImg} style={{ width: "100%", height: 200 }} />
       <View className="max-w-[90%] w-full mx-auto h-screen">
         <Text className="text-3xl font-bold text-primary-default mt-2 mb-2">Welcome Back!</Text>
         <Text className="mb-4">Fill in your login details</Text>
         <View>
-          <Text className="mb-2">Email Address or Username</Text> 
+          <Text className="mb-2">Email Address or Username</Text>
           <View className="flex-row rounded-2xl px-2 border-primary-light border items-center">
             <MaterialCommunityIcons name="email-open-outline" size={20} color="#FF7754" />
-            <TextInput className="p-4 w-full" placeholder='Johnsmiths@gmail.com'/>
+            <TextInput className="p-4 w-full" placeholder="Johnsmiths@gmail.com" />
           </View>
         </View>
 
         <View>
-          <Text className="mb-2 mt-3">Password</Text> 
+          <Text className="mb-2 mt-3">Password</Text>
           <View className="flex-row rounded-2xl px-2 border-primary-light border items-center">
             <MaterialIcons name="lock-outline" size={20} color="#FF7754" />
-            <TextInput className="p-4 w-full" placeholder='········'/>
+            <TextInput className="p-4 w-full" placeholder="········" />
           </View>
         </View>
 
@@ -54,12 +57,12 @@ const Login = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity className="flex-row justify-center mt-[60%]" onPress={() => navigation.navigate('register')}>
-          <Text >Don't have an account?</Text> <Text className="font-bold underline"> Register here</Text>
+        <TouchableOpacity className="flex-row justify-center mt-[60%]" onPress={() => router.push("/register")}>
+          <Text>Don't have an account?</Text> <Text className="font-bold underline">Register here</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-}
+};
 
 export default Login;

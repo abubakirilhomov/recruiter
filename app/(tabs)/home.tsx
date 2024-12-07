@@ -8,7 +8,7 @@ const Home = () => {
       <View>
         <Text>Home</Text>
       </View>
-    // </PrivateRoute>
+    // {/* </PrivateRoute> */}
   )
 }
 

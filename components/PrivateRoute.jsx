@@ -6,14 +6,19 @@ import { ActivityIndicator, View } from "react-native";
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
+  const [isReady, setIsReady] = React.useState(false);
 
   React.useEffect(() => {
-    if (!isAuthenticated) {
-      router.replace("/login"); // Redirect to login if not authenticated
-    }
-  }, [isAuthenticated]);
+    setIsReady(true); // Ensure the component is fully mounted
+  }, []);
 
-  if (!isAuthenticated) {
+  React.useEffect(() => {
+    if (isReady && !isAuthenticated) {
+      router.replace("/login");
+    }
+  }, [isAuthenticated, isReady, router]);
+
+  if (!isReady || !isAuthenticated) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#0000ff" />
@@ -21,7 +26,7 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  return children;
+  return children; // Render children when authenticated
 };
 
 export default PrivateRoute;
