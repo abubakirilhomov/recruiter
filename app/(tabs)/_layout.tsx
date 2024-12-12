@@ -1,10 +1,12 @@
 import { Slot, Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import PrivateRoute from "@/components/PrivateRoute";
+import Navbar from "@/components/Navbar"
 
 export default function TabsLayout() {
   return (
     <PrivateRoute>
+      <Navbar/>
         <Tabs
         screenOptions={{
           headerShown: false, // Скрыть заголовок
@@ -16,7 +18,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="home"
           options={{
-            tabBarLabel: "Главная",
+            tabBarLabel: "",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="home-outline" size={size} color={color} />
             ),
@@ -25,7 +27,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="profile"
           options={{
-            tabBarLabel: "Профиль",
+            tabBarLabel: "",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="person-outline" size={size} color={color} />
             ),

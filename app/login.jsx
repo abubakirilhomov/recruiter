@@ -15,7 +15,7 @@ const Login = () => {
 
   console.log(store);
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
     const userData = {
       username: "JohnSmith", // mock username
       email: "Johnsmiths@gmail.com", // mock email
@@ -48,8 +48,8 @@ const Login = () => {
         </View>
 
         <View className="mt-8">
-          <TouchableOpacity className="bg-accent rounded-3xl flex-row justify-center py-4 shadow-sm shadow-accent">
-            <Text onPress={handleLogin} className="text-white text-xl font-semibold">Login</Text>
+          <TouchableOpacity onPress={handleLogin} className="bg-accent rounded-3xl flex-row justify-center py-4 shadow-sm shadow-accent">
+            <Text className="text-white text-xl font-semibold">Login</Text>
           </TouchableOpacity>
 
           <TouchableOpacity className="bg-transparent mt-3 rounded-3xl flex-row justify-center py-4 border border-accent">
