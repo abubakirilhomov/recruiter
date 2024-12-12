@@ -9,15 +9,13 @@ import Entypo from "@expo/vector-icons/Entypo";
 
 const Navbar = () => {
   return (
-    <View className="bg-accent w-full py-4">
-      <View className="flex-row justify-between max-w-[90%] mx-auto items-center">
-        {/* Логотип */}
-        <View>
-          <Image style={{width: "50px", height: "50px"}} source={logo} />
-        </View>
+    <View className="w-full py-4 bg-black">
+      <View className="flex flex-row items-center justify-between w-full px-4">
+        {/* Logo */}
+        <Image style={{ width: 50, height: 50 }} source={logo} />
 
-        {/* Иконки */}
-        <View className="flex-row space-x-4">
+        {/* Icons */}
+        <View className="flex flex-row space-x-4">
           <TouchableOpacity>
             <Feather name="search" size={24} color="gray" />
           </TouchableOpacity>
